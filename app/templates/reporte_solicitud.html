@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Reporte de Solicitud{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2>Reporte de Solicitud</h2>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nombre Completo: {{ solicitud.nombre_completo }}</h5>
+          <p class="card-text"><strong>Teléfono:</strong> {{ solicitud.telefono }}</p>
+          <p class="card-text"><strong>Correo Electrónico:</strong> {{ solicitud.email }}</p>
+          <p class="card-text"><strong>Comunidad:</strong> {{ solicitud.comunidad }}</p>
+          <p class="card-text"><strong>Fuente:</strong> {{ solicitud.fuente }}</p>
+          <p class="card-text"><strong>Descripción:</strong> {{ solicitud.descripcion }}</p>
+          <p class="card-text"><strong>Fecha y Hora de Creación:</strong> {{ solicitud.fecha_solicitud.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+          <p class="card-text"><strong>Monto Solicitado:</strong> {{ solicitud.monto_solicitado }}</p>
+          <p class="card-text"><strong>Monto Aprobado:</strong> {{ solicitud.monto_aprobado }}</p>
+          <p class="card-text"><strong>Realizado por:</strong> {{ solicitud.realizado_por }}</p>
+          <p class="card-text"><strong>Días Sin Resolver:</strong> {{ solicitud.dias_sin_resolver }}</p>
+          <p class="card-text"><strong>Registrado Por:</strong> {{ solicitud.user.username }}</p>
+          <p class="card-text"><strong>Estatus:</strong> <span class="badge badge-primary">{{ solicitud.estatus }}</span></p>
+
+          {% if solicitud.foto1 %}
+          <div class="mb-3">
+            <img src="{{ url_for('static', filename='fotos/' ~ solicitud.foto1) }}" class="img-fluid" alt="Foto 1">
+          </div>
+          {% endif %}
+          {% if solicitud.foto2 %}
+          <div class="mb-3">
+            <img src="{{ url_for('static', filename='fotos/' ~ solicitud.foto2) }}" class="img-fluid" alt="Foto 2">
+          </div>
+          {% endif %}
+
+          <button class="btn btn-secondary" onclick="window.print()">Imprimir Reporte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

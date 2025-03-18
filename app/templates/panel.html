@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Panel de Control{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <h2>Panel de Control</h2>
+    <a href="{{ url_for('main.nueva_solicitud') }}" class="btn btn-primary mb-3">Crear Nueva Solicitud</a>
+    <a href="{{ url_for('main.solicitudes_atendidas') }}" class="btn btn-success mb-3">Ver Solicitudes Atendidas</a>
+    <a href="{{ url_for('main.solicitudes_rechazadas') }}" class="btn btn-danger mb-3">Ver Solicitudes Rechazadas</a>
+    <a href="{{ url_for('main.ver_marcador') }}" class="btn btn-info mb-3">Ver Marcador de Solicitudes</a>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Email</th>
+            <th>Descripción</th>
+            <th>Estatus</th>
+            <th>Días Sin Resolver</th>
+            <th>Fecha y Hora de Creación</th>
+            <th>Registrado Por</th>
+            <th>Comunidad</th>
+            <th>Fuente</th>
+            <th>Monto Solicitado</th>
+            <th>Monto Aprobado</th>
+            <th>Realizado por</th>
+            <th>Semáforo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for solicitud in solicitudes %}
+          <tr>
+            <td>{{ solicitud.id }}</td>
+            <td>{{ solicitud.nombre_completo }}</td>
+            <td>{{ solicitud.email }}</td>
+            <td>{{ solicitud.descripcion }}</td>
+            <td>{{ solicitud.estatus }}</td>
+            <td>{{ solicitud.dias_sin_resolver }}</td>
+            <td>{{ solicitud.fecha_solicitud.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            <td>{{ solicitud.user.username }}</td>
+            <td>{{ solicitud.comunidad }}</td>
+            <td>{{ solicitud.fuente }}</td>
+            <td>{{ solicitud.monto_solicitado }}</td>
+            <td>{{ solicitud.monto_aprobado }}</td>
+            <td>{{ solicitud.realizado_por }}</td>
+            <td>
+              <div class="traffic-light">
+                {% if solicitud.dias_sin_resolver <= 3 %}
+                  <div class="circle green"></div>
+                {% elif solicitud.dias_sin_resolver <= 7 %}
+                  <div class="circle yellow"></div>
+                {% else %}
+                  <div class="circle red"></div>
+                {% endif %}
+              </div>
+            </td>
+            <td>
+              <a href="{{ url_for('main.reporte_solicitud', solicitud_id=solicitud.id) }}" class="btn btn-sm btn-info">Ver Reporte</a>
+              <a href="{{ url_for('main.editar_solicitud', solicitud_id=solicitud.id) }}" class="btn btn-sm btn-warning">Editar</a>
+              <form method="POST" action="{{ url_for('main.aprobar_solicitud', solicitud_id=solicitud.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-success">Aprobar</button>
+              </form>
+              <form method="POST" action="{{ url_for('main.rechazar_solicitud', solicitud_id=solicitud.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger">Rechazar</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

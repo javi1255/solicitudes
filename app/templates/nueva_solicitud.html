@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Nueva Solicitud{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2>Nueva Solicitud</h2>
+      <form method="POST" action="{{ url_for('main.nueva_solicitud') }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.nombre_completo.label }}
+          {{ form.nombre_completo(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.telefono.label }}
+          {{ form.telefono(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.email.label }}
+          {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.comunidad.label }}
+          {{ form.comunidad(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.fuente.label }}
+          {{ form.fuente(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.descripcion.label }}
+          {{ form.descripcion(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.estatus.label }}
+          {{ form.estatus(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.monto_solicitado.label }}
+          {{ form.monto_solicitado(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.monto_aprobado.label }}
+          {{ form.monto_aprobado(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.realizado_por.label }}
+          {{ form.realizado_por(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.foto1.label }}
+          {{ form.foto1(class="form-control-file") }}
+        </div>
+        <div class="form-group">
+          {{ form.foto2.label }}
+          {{ form.foto2(class="form-control-file") }}
+        </div>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-primary") }}
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

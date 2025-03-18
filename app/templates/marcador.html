@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Marcador de Solicitudes{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <h2>Marcador de Solicitudes</h2>
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Solicitudes Rechazadas</h5>
+          <p class="card-text" id="rechazadas">...</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Solicitudes Aprobadas</h5>
+          <p class="card-text" id="aprobadas">...</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Solicitudes Pendientes</h5>
+          <p class="card-text" id="pendientes">...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    fetch("{{ url_for('main.marcador') }}")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('rechazadas').innerText = data.total_rechazadas;
+        document.getElementById('aprobadas').innerText = data.total_aprobadas;
+        document.getElementById('pendientes').innerText = data.total_pendientes;
+      });
+  </script>
+{% endblock %}

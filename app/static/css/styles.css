@@ -1,0 +1,108 @@
+body {
+  background-color: #e8f5e9; /* Fondo verde claro */
+  color: #1b5e20; /* Texto verde oscuro */
+}
+
+h2 {
+  color: #2e7d32; /* Verde medio */
+}
+
+.navbar, .footer {
+  background-color: #4caf50; /* Fondo verde */
+  color: #ffffff; /* Texto blanco */
+}
+
+.navbar .nav-link, .footer .text-muted {
+  color: #ffffff !important; /* Texto blanco */
+}
+
+.navbar .navbar-brand {
+  color: #ffffff !important; /* Texto blanco */
+}
+
+.btn-primary {
+  background-color: #4caf50; /* Botón verde */
+  border-color: #4caf50;
+}
+
+.btn-primary:hover {
+  background-color: #388e3c;
+  border-color: #388e3c;
+}
+
+.btn-secondary {
+  background-color: #81c784; /* Botón verde claro */
+  border-color: #81c784;
+}
+
+.btn-secondary:hover {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.table {
+  background-color: #ffffff; /* Fondo de la tabla blanco */
+  color: #1b5e20; /* Texto de la tabla verde oscuro */
+}
+
+.table thead th {
+  background-color: #a5d6a7; /* Encabezado de la tabla verde claro */
+  color: #1b5e20; /* Texto del encabezado verde oscuro */
+}
+
+.table tbody tr:hover {
+  background-color: #c8e6c9; /* Fila resaltada verde claro */
+}
+
+.traffic-light {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 2px;
+}
+
+.green {
+  background-color: #4caf50;
+}
+
+.yellow {
+  background-color: #ffeb3b;
+}
+
+.red {
+  background-color: #f44336;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 576px) {
+  .table thead {
+      display: none;
+  }
+  .table, .table tbody, .table tr, .table td {
+      display: block;
+      width: 100%;
+  }
+  .table tr {
+      margin-bottom: 15px;
+  }
+  .table td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+  }
+  .table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+  }
+}

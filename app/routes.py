@@ -92,8 +92,6 @@ def nueva_solicitud():
             fuente=form.fuente.data,
             descripcion=form.descripcion.data,
             estatus=form.estatus.data,
-            monto_solicitado=form.monto_solicitado.data,
-            monto_aprobado=form.monto_aprobado.data,
             realizado_por=form.realizado_por.data,
             foto1=foto1_file,
             foto2=foto2_file,

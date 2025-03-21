@@ -24,8 +24,6 @@ class FormularioSolicitud(FlaskForm):
     fuente = SelectField('Fuente', choices=[('Directa', 'Directa'), ('Redes Sociales', 'Redes Sociales'), ('Oficio', 'Oficio'), ('Llamada Telefónica', 'Llamada Telefónica')], validators=[DataRequired()])
     descripcion = TextAreaField('Descripción', validators=[DataRequired()])
     estatus = SelectField('Estatus', choices=[('Pendiente', 'Pendiente'), ('En Proceso', 'En Proceso'), ('Completado', 'Completado')], validators=[DataRequired()])
-    monto_solicitado = FloatField('Monto Solicitado', validators=[DataRequired()])
-    monto_aprobado = FloatField('Monto Aprobado', validators=[DataRequired()])
     realizado_por = StringField('Realizado por', validators=[DataRequired()])
     foto1 = FileField('Foto 1', validators=[FileAllowed(['jpg', 'png'], 'Solo se permiten imágenes!')])
     foto2 = FileField('Foto 2', validators=[FileAllowed(['jpg', 'png'], 'Solo se permiten imágenes!')])

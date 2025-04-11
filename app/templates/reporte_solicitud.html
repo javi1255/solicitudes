@@ -15,8 +15,6 @@
           <p class="card-text"><strong>Fuente:</strong> {{ solicitud.fuente }}</p>
           <p class="card-text"><strong>Descripción:</strong> {{ solicitud.descripcion }}</p>
           <p class="card-text"><strong>Fecha y Hora de Creación:</strong> {{ solicitud.fecha_solicitud.strftime('%Y-%m-%d %H:%M:%S') }}</p>
-          <p class="card-text"><strong>Monto Solicitado:</strong> {{ solicitud.monto_solicitado }}</p>
-          <p class="card-text"><strong>Monto Aprobado:</strong> {{ solicitud.monto_aprobado }}</p>
           <p class="card-text"><strong>Realizado por:</strong> {{ solicitud.realizado_por }}</p>
           <p class="card-text"><strong>Días Sin Resolver:</strong> {{ solicitud.dias_sin_resolver }}</p>
           <p class="card-text"><strong>Registrado Por:</strong> {{ solicitud.user.username }}</p>
